@@ -18,7 +18,7 @@ if sys.platform != "win32":
 
         uvloop.install()
 
-from pyrogram import idle, utils
+from pyrogram import idle
 
 from config import Config
 from Main.Client.Bot import create_main_bot
@@ -152,10 +152,15 @@ async def start_services() -> None:
         log.info("Shutdown complete.")
 
 
-def run() -> None:
+"""def run() -> None:
     loop = utils.get_event_loop()
     try:
         loop.run_until_complete(start_services())
+    except KeyboardInterrupt:
+        pass"""
+def run() -> None:
+    try:
+        asyncio.run(start_services())
     except KeyboardInterrupt:
         pass
 
