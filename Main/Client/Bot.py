@@ -17,7 +17,7 @@ def create_main_bot() -> Client:
         api_id=Config.API_ID,
         api_hash=Config.API_HASH,
         bot_token=Config.BOT_TOKEN,
-        ipv6=True,
+        ipv6=False,
         in_memory=True,
         workers=Config.BOT_WORKERS,
         max_message_cache_size=100,
