@@ -1,0 +1,35 @@
+services:
+  bot:
+    build: .
+    container_name: userbot_hosting_bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - MONGO_URI=${MONGO_URI:-mongodb://mongo:27017}
+    ports:
+      - "${PORT:-8080}:${PORT:-8080}"
+    volumes:
+      - ./data:/app/data
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  mongo:
+    image: mongo:7
+    container_name: userbot_hosting_mongo
+    restart: unless-stopped
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mongo_data:
