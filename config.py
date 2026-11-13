@@ -77,7 +77,7 @@ class Config:
     # Welcome banner media URL for /start
     START_MEDIA_URL: str = os.getenv(
         "START_MEDIA_URL",
-        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80",
+        "https://i.ibb.co/FLj8NKqX/file-00000000f5708211b043eaf4ce177e49.png",
     ).strip()
 
     LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO").upper()
