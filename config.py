@@ -66,7 +66,7 @@ class Config:
     WEBHOOK_BASE_URL: str = os.getenv("WEBHOOK_BASE_URL", "").strip().rstrip("/")
 
     # Rate limits & security
-    SEND_CODE_COOLDOWN: float = float(os.getenv("SEND_CODE_COOLDOWN", "15.0"))
+    SEND_CODE_COOLDOWN: float = float(os.getenv("SEND_CODE_COOLDOWN", "5.0"))
     WIZARD_TTL_SECONDS: float = float(os.getenv("WIZARD_TTL_SECONDS", "600.0"))
     HTTP_MAX_BODY_BYTES: int = int(os.getenv("HTTP_MAX_BODY_BYTES", str(1024 * 1024)))
 
